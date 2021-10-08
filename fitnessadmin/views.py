@@ -1,3 +1,6 @@
+from django.shortcuts import render
+
+# Create your views here.
 from django.http import HttpResponse
 import MySQLdb
 
@@ -12,7 +15,7 @@ def index(request):
         print(r)
     cursor.close()
     db.close()
-    return HttpResponse("<h1>Welcome to Fitness World</h1>")
+    return HttpResponse("<h1>Welcome to Fitness World!</h1>")
 
 def sessions(request):
     return HttpResponse("<h1>Sessions available today are:</h1>")
