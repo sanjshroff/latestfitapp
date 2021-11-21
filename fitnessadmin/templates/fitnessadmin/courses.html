@@ -17,6 +17,7 @@
   <tr>
     <td>{{ course.coursename }}</td>
     <td>{{ course.coursedescription }}</td>
+    <td>{{ course.zoom_link }}</td>
     <td> <a href={% url 'editcourse' course.courseid %}> Edit </td>
     <td> <a href={% url 'deletecourse' course.courseid %}> Delete </td>
   </tr>

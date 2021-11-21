@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Instructor  Details</h1>
+<a href="{% url 'addInstructor' %}"> Add instructor </a>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Instructor Name</th>
+      <th scope="col">Course</th>
+      <th scope="col">Skills</th>
+      <th scope="col">Phone Number</th>
+      <th scope="col">Email</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  {% for instructor in instructors %}
+  <tbody>
+  <tr>
+    <td>{{ instructor.instructorname }}</td>
+    <td>{{ instructor.instructorcourse }}</td>
+    <td>{{ instructor.instructorskills }}</td>
+    <td>{{ instructor.instructorphonenumber }}</td>
+    <td>{{ instructor.instructoremail }}</td>
+    <td> <a href={% url 'editInstructor' instructor.instructorid %}> Edit </td>
+    <td> <a href={% url 'deleteInstructor' instructor.instructorid %}> Delete </td>
+  </tr>
+  </tbody>
+  {% endfor %}
+</table>
+
+{% endblock content %}
