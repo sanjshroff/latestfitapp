@@ -32,7 +32,7 @@ def addcourse(request):
         form =  CourseForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('courses')
+            return redirect('admincourses')
         print(request.POST)
     context = {'form': form}
     return render(request, "fitnessadmin/addcourse.html", context)
@@ -45,7 +45,7 @@ def editcourse(request, pk):
         form =  CourseForm(request.POST, instance=course)
         if form.is_valid():
             form.save()
-            return redirect('courses')
+            return redirect('admincourses')
         print(request.POST)
     context = {'form': form}
     return render(request, "fitnessadmin/addInstructor.html", context)
@@ -55,7 +55,7 @@ def deletecourse(request, pk):
 
     if request.method == "POST":
         course.delete()
-        return redirect('courses')
+        return redirect('admincourses')
     context = {'object': course}
     return render(request, "fitnessadmin/delete.html", context)
 
@@ -74,7 +74,7 @@ def addInstructor(request):
         form =  InstructorForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('instructors')
+            return redirect('admininstructors')
         print(request.POST)
     context = {'form': form}
     return render(request, "fitnessadmin/addinstructor.html", context)
@@ -87,7 +87,7 @@ def editInstructor(request, pk):
         form =  InstructorForm(request.POST, instance=instructor)
         if form.is_valid():
             form.save()
-            return redirect('instructors')
+            return redirect('admininstructors')
         print(request.POST)
     context = {'form': form}
     return render(request, "fitnessadmin/addinstructor.html", context)
@@ -97,7 +97,7 @@ def deleteInstructor(request, pk):
 
     if request.method == "POST":
         instructor.delete()
-        return redirect('instructors')
+        return redirect('admininstructors')
     context = {'object': instructor}
     return render(request, "fitnessadmin/delete.html", context)
 
