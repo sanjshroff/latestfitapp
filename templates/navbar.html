@@ -1,0 +1,32 @@
+{% load static %}
+<html>                  
+
+<!-- Header Section -->
+<header class="header">
+  <div class="container container--narrow">
+    <a href="" class="header__logo">
+      <img src="{% static 'images/logo.png' %}"  alt="logo" class="header__logo">
+    </a>
+    <nav class="header__nav">
+      <input type="checkbox" id="responsive-menu" />
+      <label for="responsive-menu" class="toggle-menu">
+        <span>Menu</span>
+        <div class="toggle-menu__lines"></div>
+      </label>
+      <ul class="header__menu">
+        
+        <li class="header__menuItem"><a href="">Fitness</a></li>
+        <li class="header__menuItem"><a href="{% url 'home' %}">Home</a></li>
+        <!--<li class="header__menuItem"><a href="">Logout</a></li>-->
+        <!--<li class="header__menuItem"></li><form class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" type="search" placeholder="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form></li> -->
+      </ul>
+      
+    </nav>
+  </div>
+</header>
+
+
+</html>

@@ -48,7 +48,7 @@ def editcourse(request, pk):
             return redirect('admincourses')
         print(request.POST)
     context = {'form': form}
-    return render(request, "fitnessadmin/addInstructor.html", context)
+    return render(request, "fitnessadmin/editCourse.html", context)
 
 def deletecourse(request, pk):
     course = Course.objects.get(courseid=pk)
@@ -57,7 +57,7 @@ def deletecourse(request, pk):
         course.delete()
         return redirect('admincourses')
     context = {'object': course}
-    return render(request, "fitnessadmin/delete.html", context)
+    return render(request, "fitnessadmin/deleteCourse.html", context)
 
 def instructors(request):
     instructors = Instructor.objects.all()
@@ -90,7 +90,7 @@ def editInstructor(request, pk):
             return redirect('admininstructors')
         print(request.POST)
     context = {'form': form}
-    return render(request, "fitnessadmin/addinstructor.html", context)
+    return render(request, "fitnessadmin/editInstructor.html", context)
 
 def deleteInstructor(request, pk):
     instructor = Instructor.objects.get(instructorid=pk)
@@ -99,7 +99,7 @@ def deleteInstructor(request, pk):
         instructor.delete()
         return redirect('admininstructors')
     context = {'object': instructor}
-    return render(request, "fitnessadmin/delete.html", context)
+    return render(request, "fitnessadmin/deleteInstructor.html", context)
 
 def addEnrollment(request):
     form = EnrollForm()

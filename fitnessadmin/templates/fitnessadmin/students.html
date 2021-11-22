@@ -1,27 +1,46 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Student  Information</h1>
 
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Phone number</th>
-      <th scope="col">Email Id</th>
-    </tr>
-  </thead>
-  {% for student in students %}
-  <tbody>
-  <tr>
-    <td>{{ student.studentfirstname }}</td>
-    <td>{{ student.studentlastname }}</td>
-    <td>{{ student.studentphonenumber }}</td>
-    <td>{{ student.studentemailid }}</td>
-  </tr>
-  </tbody>
-  {% endfor %}
-</table>
+
+
+
+
+
+
+
+
+
+  <section class="coursesList">
+    <div class="container">
+      <div class="grid grid--three">
+        {% for student in students %}
+        <div class="column">
+          <div class="card project">
+            <a href="" class="project">
+              <!--<img class="project__thumbnail" src="" alt="project thumbnail" />--> 
+              <div class="card__body">
+                <h3 class="project__title">{{student.studentfirstname}}</h3>
+                <p><a class="project__author" href="">{{student.studentlastname}}<!--By Dennis Ivanov --></a></p>
+                <p><a class="project__author" href="">{{student.studentphonenumber}}<!--By Dennis Ivanov --></a></p>
+                <p><a class="project__author" href="">{{student.studentemailid}}<!--By Dennis Ivanov --></a></p>
+                <p class="project--rating">
+                
+                </p>
+
+              </div>
+            </a>
+          </div>
+        </div>
+      {% endfor %}
+
+        
+
+      </div>
+    </div>
+  </section>
+
+</main>
 
 {% endblock content %}
+

@@ -1,0 +1,34 @@
+
+
+{% extends 'base.html' %}
+
+{% block content %}
+<main class="projects">
+  <section class="hero-section text-center">
+    <div class="container container--narrow">
+      <div class="hero-section__box">
+        <h2>ADMIN  <span>Delete Courses</span></h2>
+        <form action="" method="POST">
+            {% csrf_token %}
+            <p> Delete {{ object }} ? </p>
+            <input  class="btn btn--sub btn--lg" type="submit"  value=" Delete Confirm" />
+        </form>
+
+
+      </div>
+
+
+      
+
+       
+         <!--<button>ton> input class="btn btn--sub btn--lg" ><a href="{% url 'addcourse' %}"> Add course </a> </button> -->
+        </form>
+      </div>
+    </div>
+  </section>
+
+ 
+
+</main>
+
+{% endblock content %}

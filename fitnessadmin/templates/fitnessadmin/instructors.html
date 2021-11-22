@@ -1,19 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Instructor  Details</h1>
-<a href="{% url 'addInstructor' %}"> Add instructor </a>
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th scope="col">Instructor Name</th>
-      <th scope="col">Course</th>
-      <th scope="col">Skills</th>
-      <th scope="col">Phone Number</th>
-      <th scope="col">Email</th>
-      <th scope="col"></th>
-    </tr>
-  </thead>
+<!--
   {% for instructor in instructors %}
   <tbody>
   <tr>
@@ -28,5 +16,59 @@
   </tbody>
   {% endfor %}
 </table>
+
+
+
+-->
+
+<main class="projects">
+  <section class="hero-section text-center">
+    <div class="container container--narrow">
+      <div class="hero-section__box">
+        <h2>Instructor Details  <span></span></h2>
+      </div>
+ 
+
+      <a href="{% url 'addInstructor' %}"><input class="btn btn--sub btn--lg" type="submit"  value="Add Instructor" /></a>
+         <!--<button>ton> input class="btn btn--sub btn--lg" ><a href="{% url 'addcourse' %}"> Add course </a> </button> -->
+        </form>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="coursesList">
+    <div class="container">
+      <div class="grid grid--three">
+      {% for instructor in instructors %}
+        <div class="column">
+          <div class="card project">
+            <a href="" class="project">
+              <!--<img class="project__thumbnail" src="" alt="project thumbnail" />--> 
+              <div class="card__body">
+                <h3 class="project__title">{{instructor.instructorname}}</h3>
+                <p><a class="project__author" href="">{{instructor.instructorcourse}}<!--By Dennis Ivanov --></a></p>
+                <p><a class="project__author" href="">{{instructor.instructorskills}}<!--By Dennis Ivanov --></a></p>
+                <p><a class="project__author" href="">{{instructor.instructorphonenumber}}<!--By Dennis Ivanov --></a></p>
+                <p><a class="project__author" href="">{{instructor.instructoremail}}<!--By Dennis Ivanov --></a></p>
+                <p class="project--rating">
+                  <span style="font-weight: bold;"><a href={% url 'editInstructor' instructor.instructorid %}> Edit &emsp; <!--{{course.coursename}}%--></span> 
+                  <span style="font-weight: bold;"><a href={% url 'deleteInstructor' instructor.instructorid %}> Delete <!--{{course.coursename}}%--></span>
+
+                </p>
+
+              </div>
+            </a>
+          </div>
+        </div>
+      {% endfor %}
+
+        
+
+      </div>
+    </div>
+  </section>
+
+</main>
 
 {% endblock content %}

@@ -1,20 +1,22 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<!--
-<h1>Add course page</h1>
-<form method="POST">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit">
-</form> -->
-<!-- Main Section -->
+<main class="projects">
+    <section class="hero-section text-center">
+      <div class="container container--narrow">
+        <div class="hero-section__box">
+          <h2>ADMIN  <span>Edit Instructor</span></h2>
+        </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+
 <main class="formPage my-xl">
     <div class="content-box">
         <div class="formWrapper">
-            <div class="hero-section__box">
-                <h2>ADMIN  <span>Add Courses</span></h2>
-              </div>
+           
             <br>
 
             <form class="form" method="POST">
@@ -34,4 +36,6 @@
 </main>
 
 {% endblock content %}
+
+
 
