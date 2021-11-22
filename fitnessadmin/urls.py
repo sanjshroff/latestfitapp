@@ -19,6 +19,6 @@ urlpatterns = [
     path('deleteInstructor/<str:pk>/', views.deleteInstructor, name="deleteInstructor"),
 
     #dont push
-    path('enroll/', views.addEnrollment, name="addEnrollment"),
-    path('enrolled/', views.Enrollment, name="Enrollment"),
+    path('enrolled/', views.enrolled, name="enrolled"),
+    path('enrollment/', views.addEnrollment, name="addEnrollment"),
 ]
