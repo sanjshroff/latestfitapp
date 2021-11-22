@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<main class="projects">
+    <section class="hero-section text-center">
+      <div class="container container--narrow">
+        <div class="hero-section__box">
+          <h2>ADMIN  <span>Edit Courses</span></h2>
+        </div>
+        <!--
+        <div class="hero-section__search">
+          <form class="form" action="#" method="get">
+            <div class="form__field">
+              <label for="formInput#search">Search By Courses </label>
+              <input class="input input--text" id="formInput#search" type="text" name="text"
+                placeholder="Search by Course Name" />
+            </div>
+          -->
+  
+         
+           <!--<button>ton> input class="btn btn--sub btn--lg" ><a href="{% url 'addcourse' %}"> Add course </a> </button> -->
+          </form>
+        </div>
+      </div>
+    </section>
+  
+  <!--<h1>Course  Details </h1> 
+  <button><a href="{% url 'addcourse' %}"> Add course </a> </button>  -->
+  
+  <!--
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Course Name</th>
+        <th scope="col">Description</th>
+        <th scope="col"></th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    {% for course in courses %}
+    <tbody>
+    <tr>
+      <td>{{ course.coursename }}</td>
+      <td>{{ course.coursedescription }}</td>
+      <td> <a href={% url 'editcourse' course.courseid %}> Edit </td>
+      <td> <a href={% url 'deletecourse' course.courseid %}> Delete </td>
+    </tr>
+    </tbody>
+    {% endfor %}
+  </table> -->
+  
+  
+  
+    <!-- Search Result: DevList -->
+
+<main class="formPage my-xl">
+    <div class="content-box">
+        <div class="formWrapper">
+           
+            <br>
+
+            <form class="form" method="POST">
+                {% csrf_token %}
+                <!-- Input:Text -->
+                {% for field in form %}
+                <div class="form__field">
+                    <label for="formInput#text">{{field.label}}<!--Text Field:--> </label>
+                    {{field}}
+                </div>
+                {% endfor %}
+
+                <input class="btn btn--sub btn--lg  my-md" type="submit" value="Submit" />
+            </form>
+        </div>
+    </div>
+</main>
+
+{% endblock content %}
+
+
+

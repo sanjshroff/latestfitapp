@@ -61,6 +61,7 @@ input.input[type='password']:active,
 input.input[type='number']:active,
 select.input:focus,
 select.input:active,
+select.input,
 textarea.input:focus,
 textarea.input:active {
   outline: none;

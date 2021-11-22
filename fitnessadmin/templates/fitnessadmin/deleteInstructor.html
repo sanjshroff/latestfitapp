@@ -1,0 +1,26 @@
+
+
+{% extends 'base.html' %}
+
+{% block content %}
+<main class="projects">
+  <section class="hero-section text-center">
+    <div class="container container--narrow">
+      <div class="hero-section__box">
+        <h2>ADMIN  <span>Delete Instructor</span></h2>
+        <form action="" method="POST">
+            {% csrf_token %}
+            <p> Delete {{ object }} ? </p>
+            <input  class="btn btn--sub btn--lg" type="submit"  value=" Delete Confirm" />
+        </form>
+      </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+ 
+
+</main>
+
+{% endblock content %}

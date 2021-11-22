@@ -1,28 +1,52 @@
+
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Course  Details</h1>
-<a href="{% url 'addcourse' %}"> Add course </a>
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th scope="col">Course Name</th>
-      <th scope="col">Description</th>
-      <th scope="col"></th>
-      <th scope="col"></th>
-    </tr>
-  </thead>
-  {% for course in courses %}
-  <tbody>
-  <tr>
-    <td>{{ course.coursename }}</td>
-    <td>{{ course.coursedescription }}</td>
-    <td>{{ course.zoom_link }}</td>
-    <td> <a href={% url 'editcourse' course.courseid %}> Edit </td>
-    <td> <a href={% url 'deletecourse' course.courseid %}> Delete </td>
-  </tr>
-  </tbody>
-  {% endfor %}
-</table>
+<main class="projects">
+  <section class="hero-section text-center">
+    <div class="container container--narrow">
+      <div class="hero-section__box">
+        <h2>ADMIN  <span>Add Courses</span></h2>
+      </div>
+ 
+
+        <a href="{% url 'addcourse' %}"><input class="btn btn--sub btn--lg" type="submit"  value="Add Course" /></a>
+         <!--<button>ton> input class="btn btn--sub btn--lg" ><a href="{% url 'addcourse' %}"> Add course </a> </button> -->
+        </form>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="coursesList">
+    <div class="container">
+      <div class="grid grid--three">
+      {% for course in courses %}
+        <div class="column">
+          <div class="card project">
+            <a href="" class="project">
+              <!--<img class="project__thumbnail" src="" alt="project thumbnail" />--> 
+              <div class="card__body">
+                <h3 class="project__title">{{course.coursename}}</h3>
+                <p><a class="project__author" href="">{{course.coursedescription}}<!--By Dennis Ivanov --></a></p>
+                <p class="project--rating">
+                  <span style="font-weight: bold;"><a href={% url 'editcourse' course.courseid %}> Edit &emsp; <!--{{course.coursename}}%--></span> 
+                  <span style="font-weight: bold;"><a href={% url 'deletecourse' course.courseid %}> Delete<!--{{course.coursename}}%--></span>
+
+                </p>
+
+              </div>
+            </a>
+          </div>
+        </div>
+      {% endfor %}
+
+        
+
+      </div>
+    </div>
+  </section>
+
+</main>
 
 {% endblock content %}
