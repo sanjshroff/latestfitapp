@@ -1,19 +1,23 @@
 from django.db import models
+from django.contrib.auth.models import User
+import uuid
 
-class Student(models.Model):
-    studentid = models.AutoField(db_column='studentId', primary_key=True)  # Field name made lowercase.
-    studentfirstname = models.CharField(db_column='studentFirstName', max_length=45)  # Field name made lowercase.
-    studentphonenumber = models.CharField(db_column='studentPhoneNumber', max_length=45)  # Field name made lowercase.
-    studentlastname = models.CharField(db_column='studentLastName', max_length=45, blank=True, null=True)  # Field name made lowercase.
-    studentemailid = models.EmailField(db_column='studentEmailId', max_length=45)  # Field name made lowercase.
-    studentpassword = models.CharField(db_column='studentPassword', max_length=45)  # Field name made lowercase.
+from users.models import Student
 
-    class Meta:
-        managed = False
-        db_table = 'student'
+# class Student(models.Model):
+#     studentid = models.AutoField(db_column='studentId', primary_key=True)  # Field name made lowercase.
+#     studentfirstname = models.CharField(db_column='studentFirstName', max_length=45)  # Field name made lowercase.
+#     studentphonenumber = models.CharField(db_column='studentPhoneNumber', max_length=45)  # Field name made lowercase.
+#     studentlastname = models.CharField(db_column='studentLastName', max_length=45, blank=True, null=True)  # Field name made lowercase.
+#     studentemailid = models.EmailField(db_column='studentEmailId', max_length=45)  # Field name made lowercase.
+#     studentpassword = models.CharField(db_column='studentPassword', max_length=45)  # Field name made lowercase.
+
+#     class Meta:
+#         managed = False
+#         db_table = 'student'
     
-    def __str__(self):
-        return self.studentfirstname
+#     def __str__(self):
+#         return str(self.studentid)
 
 class Instructor(models.Model):
     instructorid = models.AutoField(db_column='instructorId', primary_key=True)  # Field name made lowercase.
@@ -51,9 +55,10 @@ class Course(models.Model):
     def __str__(self):
         return self.coursename
 class Enroll(models.Model):
-    studentid = models.ForeignKey('Student', models.DO_NOTHING, db_column='studentId')  # Field name made lowercase.
+    studentid = models.ForeignKey(Student, models.DO_NOTHING, db_column='studentId')  # Field name made lowercase.
     courseid = models.ForeignKey(Course, models.DO_NOTHING, db_column='courseId')  # Field name made lowercase.
-
+    enrollid = models.AutoField(db_column='enrollId', primary_key=True)  # Field name made lowercase.
+    
     class Meta:
         managed = False
         db_table = 'enroll'

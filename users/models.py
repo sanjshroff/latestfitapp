@@ -20,4 +20,4 @@ class Student(models.Model):
                           primary_key=True, editable=False)
 
     def __str__(self):
-        return str(self.username)
+        return str(self.name)

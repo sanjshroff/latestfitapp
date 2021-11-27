@@ -14,7 +14,7 @@
                     <div class="form__field">
                         <label for="formInput#search">Search By Enroll </label>
                         <input class="input input--text" id="formInput#search" type="text" name="search_query"
-                            placeholder="Search by Project Title" value="{{search_query}}" />
+                            placeholder="Search by Courses" value="{{search_query}}" />
                     </div>
                     <input class="btn btn--sub btn--lg" type="submit" value="Search" />
                 </form>
@@ -24,12 +24,25 @@
     <section class="projectsList">
         <div class="container">
             <div class="grid grid--three">
-                {% for erl in Enroll %}
+                {% if not courses%}
+                    <h3 class="project__title">Not enrolled to any courses yet, </h3>
+                    <p><a href={% url 'courses'%}>click here to list available courses</a></p
+                {% endif %}
+                {% for course in courses %}
                 <div class="column">
                     <div class="card project">
+                        <a href="{% url 'course' course.courseid %}" class="project">
+                            <img class="project__thumbnail" src="{{course.featured_image.url}}" alt="project thumbnail" />
                             <div class="card__body">
-                                <h3 class="project__title">{{erl.sessionid}}</h3>
-                                <input class="btn btn--sub btn--lg  my-md" type="submit" value="Enroll" />
+                                <h3 class="project__title">{{course.coursename}}</h3>
+                                <p><a class="project__author" href="{% url 'instructor' course.trainer.instructorid %}">By
+                                        {{course.trainer.instructorname}}</a>
+                                </p>
+                                <div class="project__tags">
+                                    <span class="tag tag--pill tag--main">
+                                        <small>{{course.trainer.instructorskills}}</small>
+                                    </span>
+                                </div>
                             </div>
                         </a>
                     </div>

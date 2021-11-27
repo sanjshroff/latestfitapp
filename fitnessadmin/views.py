@@ -3,9 +3,10 @@ from django.shortcuts import redirect, render
 # Create your views here.
 from django.http import HttpResponse
 import MySQLdb
-from fitnessadmin.models import Instructor, Student, Course, Enroll
+from fitnessadmin.models import Instructor, Course, Enroll
 from .forms import CourseForm, InstructorForm, EnrollForm
 
+from users.models import Student
 def home(request):
     return render(request, "home.html")
 

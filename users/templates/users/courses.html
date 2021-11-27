@@ -16,7 +16,7 @@
                     <div class="form__field">
                         <label for="formInput#search">Search By Courses </label>
                         <input class="input input--text" id="formInput#search" type="text" name="search_query"
-                            placeholder="Search by Project Title" value="{{search_query}}" />
+                            placeholder="Search by Courses" value="{{search_query}}" />
                     </div>
 
                     <input class="btn btn--sub btn--lg" type="submit" value="Search" />
@@ -28,7 +28,6 @@
     <section class="projectsList">
         <div class="container">
             <div class="grid grid--three">
-
                 {% for course in courses %}
                 <div class="column">
                     <div class="card project">
@@ -44,8 +43,10 @@
                                         <small>{{course.trainer.instructorskills}}</small>
                                     </span>
                                 </div>
-
-                                <input class="btn btn--sub btn--lg  my-md" type="submit" value="Enroll" />
+                                <form action="{% url 'course' course.courseid %}" method="POST">
+                                {% csrf_token %}
+                                <input id="enrollForm" class="btn btn--sub btn--lg  my-md" type="submit" value="Enroll" name='enroll' data-course="{{ course.coursename}}"/>
+                                </form>
                             </div>
                         </a>
                     </div>
@@ -59,4 +60,22 @@
     {% comment %} {% include 'pagination.html' with queryset=projects custom_range=custom_range %} {% endcomment %}
 
 </main>
+
+<script>
+data = document.getElementsByClassName("btn btn--sub btn--lg  my-md")
+
+console.log("class data: ", data)
+
+for (let i=0; data.length > i; i++ ) {
+    data[i].addEventListener('click', (e) => {
+        console.log('Clicked Enroll:', i)
+        console.log("Course name:", e.target.dataset.course)
+    })
+}
+
+function myFunction() {
+  alert("The form was submitted");
+  console.log("In courses script");
+}
+</script>
 {% endblock content %}

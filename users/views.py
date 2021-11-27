@@ -6,11 +6,12 @@ from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.db.models import Q
-from .utils import searchInstructors
+from .utils import searchCourses, searchInstructors
 
 from .forms import CustomUserCreationForm
 
 from fitnessadmin.models import Course, Instructor, Enroll
+from .models import Student
 # Create your views here.
 
 
@@ -61,13 +62,19 @@ def registerUser(request):
             user.username = user.username.lower()
             user.save()
 
-            messages.success(request, 'User account was created!')
-
-            login(request, user)
+            try:
+                print("USERname!!!!!!!", user.first_name)
+                student = Student.objects.create(user=user, name=user.first_name, email=user.email, username=user.username)
+                student.save()
+                messages.success(request, 'User account was created!')
+                login(request, user)
+            except:
+                messages.error(request, 'User account was not created!')
+            
             return redirect('profiles')
 
         else:
-            messages.success(
+            messages.error(
                 request, 'An error has occurred during registration')
 
     context = {'page': page, 'form': form}
@@ -75,14 +82,52 @@ def registerUser(request):
 
 @login_required(login_url='login')
 def courses(request):
-    courses = Course.objects.all()
-    context = {'courses': courses}
+    
+    if request.method == "POST":
+        print(request.user.username)
+        print(request.POST.get('data-course'))
+        print(request.POST)
+        # student = Student.objects.filter(Q(studentfirstname="Student1"))
+        
+        # course1 = Course.objects.filter(coursename="Yoga")
+        # print(student[0].studentid)
+        # print(course1)
+        # enroll = Enroll.objects.create(studentid=student[0],courseid=course1[0])
+        # enroll.save()
+    courses, search_query = searchCourses(request)
+    context = {'courses': courses, 'search_query': search_query}
     return render(request, "users/courses.html", context)
 
 @login_required(login_url='login')
 def course(request, pk):
+    enrolledFlag = False
+    existingFlag = True
+
+    courseObj = Course.objects.filter(courseid=pk)
+    studentObj = Student.objects.filter(username=request.user.username)
+    enrollData = Enroll.objects.filter(Q(studentid=studentObj[0]) &
+        Q(courseid=courseObj[0]))
+    print(enrollData)
+
+    if enrollData:
+        enrolledFlag = True
+        messages.success(request, "Already enrolled to {}".format(courseObj[0]))
+    if request.method == "POST":
+        print(pk)
+        print(request.user.username)
+        if request.POST["enroll"] == "Unsubscribe":
+            enrollData.delete()
+            messages.success(request, "Unsubscribed from {}".format(courseObj[0]))
+            return redirect('courses')
+
+        elif not enrollData:
+            enroll = Enroll.objects.create(studentid=studentObj[0], courseid=courseObj[0])
+            enroll.save()
+            messages.success(request, "Successfully enrolled to {}".format(courseObj[0]))
+            enrolledFlag = True
+
     course = Course.objects.get(courseid=pk)
-    context = {'course': course}
+    context = {'course': course, 'enrolledFlag' : enrolledFlag}
     return render(request, 'users/single-course.html', context)
 
 @login_required(login_url='login')
@@ -99,6 +144,26 @@ def instructor(request, pk):
 
 @login_required(login_url='login')
 def enroll(request):
-    enroll = Enroll.objects.all()
-    context = {'enroll': enroll}
-    return render(request, 'users/enroll.html', context)
+    print("Requested user", request.user.username)
+    courseList = []
+    courseidList = []
+    context = {'courses': courseList}
+    try:
+        allStudents = Student.objects.all()
+        print(allStudents)
+        studentObj = Student.objects.filter(username=request.user.username)
+        print("Student object:", studentObj)
+        print("Student object ID:", type(studentObj[0].id))
+
+        enroll = Enroll.objects.filter(studentid=studentObj[0].id)
+        print("Enroll details: ", enroll)
+        for e in enroll:
+            print(e.courseid.courseid)
+            if e.courseid.courseid not in courseidList:
+                courseidList.append(e.courseid.courseid)
+                courseList.append(e.courseid)
+            print(courseList)
+        context = {'courses': courseList}
+        return render(request, 'users/enroll.html', context)
+    except Exception as e:
+        return render(request, 'users/enroll.html', context)
