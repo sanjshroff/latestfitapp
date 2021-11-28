@@ -1,0 +1,44 @@
+{% extends 'maininstructor.html' %}
+
+{% block content %}
+
+
+<main class="projects">
+    <section class="hero-section text-center">
+        <div class="container container--narrow">
+            <div class="hero-section__box">
+                <h2>Search for <span>Enrolled students</span></h2>
+            </div>
+            <div class="hero-section__search">
+                <form id='searchForm' class="form" action="{% url 'courses' %}" method="get">
+                    <div class="form__field">
+                        <label for="formInput#search">Search By Enroll </label>
+                        <input class="input input--text" id="formInput#search" type="text" name="search_query"
+                            placeholder="Search by Project Title" value="{{search_query}}" />
+                    </div>
+                    <input class="btn btn--sub btn--lg" type="submit" value="Search" />
+                </form>
+            </div>
+        </div>
+    </section>
+    <section class="projectsList">
+        <div class="container">
+            <div class="grid grid--three">
+                {% for erl in Enroll %}
+                <div class="column">
+                    <div class="card project">
+                            <div class="card__body">
+                                <h3 class="project__title">{{erl.sessionid}}</h3>
+                                <input class="btn btn--sub btn--lg  my-md" type="submit" value="Enroll" />
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                {% endfor %}
+
+            </div>
+        </div>
+    </section>
+</main>
+
+{% endblock content %}

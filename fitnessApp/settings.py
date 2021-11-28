@@ -41,6 +41,7 @@ INSTALLED_APPS = [
 
     'fitnessadmin.apps.FitnessadminConfig',
     'users.apps.UsersConfig',
+    'fitnessInstructor',
 ]
 
 MIDDLEWARE = [

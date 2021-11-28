@@ -1,0 +1,31 @@
+
+
+{% extends 'baseadmin.html' %}
+
+{% block content %}
+
+
+
+  <section class="hero-section text-center">
+    <div class="container container--narrow">
+      <div class="hero-section__box">
+        <h2>Admin <span>Dashboard</span></h2>
+      </div>
+      <main class="projects">
+    {% comment %} <a class="nav-link" href="{% url 'enrolled' %}">Enrolled</a> {% endcomment %}
+    
+      <div class="hero-section__search">
+      
+        <a href="{% url 'admincourses' %}"> <input class="btn btn--sub btn--lg" type="submit" value="Course Module" /></a> 
+        <a href="{% url 'students' %}"><input class="btn btn--sub btn--lg" type="submit" value="Student Module" /></a> 
+        <a href="{% url 'admininstructors' %}"><input class="btn btn--sub btn--lg" type="submit" value="Instructor Module" /></a> 
+     
+      </div>
+    </div>
+  </section>
+
+
+
+</main>
+
+{% endblock content %}

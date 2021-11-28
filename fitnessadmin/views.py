@@ -8,7 +8,10 @@ from .forms import CourseForm, InstructorForm, EnrollForm
 
 from users.models import Student
 def home(request):
-    return render(request, "home.html")
+    return render(request, "adminhome.html")
+
+def adminhome(request):
+    return render(request, "adminhome.html")    
 
 def sessions(request):
     return HttpResponse("<h1>Sessions available today are:</h1>")

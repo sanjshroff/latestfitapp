@@ -26,8 +26,8 @@ class Instructor(models.Model):
     instructorskills = models.CharField(db_column='instructorSkills', max_length=45, blank=True, null=True)  # Field name made lowercase.
     instructorphonenumber = models.CharField(db_column='instructorPhoneNumber', max_length=45)  # Field name made lowercase.
     instructoremail = models.CharField(db_column='instructorEmail', max_length=45)  # Field name made lowercase.
-    featured_image = models.ImageField(
-        null=True, blank=True, default="default.jpg")
+    instructorpassword = models.CharField(db_column='password', max_length=45)  # Field name made lowercase.
+    featured_image = models.ImageField(null=True, blank=True, default="default.jpg")
     created = models.DateTimeField(auto_now_add=True)
 
 
