@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 8.0.27, for Win64 (x86_64)
 --
--- Host: localhost    Database: fitnessdb
+-- Host: 127.0.0.1    Database: fitnessdb
 -- ------------------------------------------------------
 -- Server version	8.0.27
 
@@ -116,7 +116,7 @@ CREATE TABLE `auth_user` (
   `date_joined` datetime(6) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `username` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -125,7 +125,7 @@ CREATE TABLE `auth_user` (
 
 LOCK TABLES `auth_user` WRITE;
 /*!40000 ALTER TABLE `auth_user` DISABLE KEYS */;
-INSERT INTO `auth_user` VALUES (1,'pbkdf2_sha256$260000$Ve3ifaI3eNElP8NrTUh0bF$LWiLIshlX4KvOwOVEbqdy8Q79dP36XxBK4WaI7sdAvY=','2021-11-27 00:21:38.149654',1,'admin','','','admin@gmail.com',1,1,'2021-10-08 23:24:00.261970'),(2,'pbkdf2_sha256$260000$V2SKlsvT1NYNinBEaSNTUT$aRcksPnrjS+tW5sKEbWLLVjQZdAUl3s2z3hKiECLJ0E=',NULL,0,'sanjshroff2@gmail.com','','','',0,1,'2021-11-17 03:35:21.950574'),(3,'pbkdf2_sha256$260000$p1cKzf6T0i1JSja9IDbjw1$AvH9CcqE95cq4WP1IR3+oYAbjKGMYFjfXjWyOe6V3wg=','2021-11-19 05:13:00.105874',0,'kush','kushal','','kush@gmail.com',0,1,'2021-11-19 05:09:26.383730'),(4,'pbkdf2_sha256$260000$guuR9lH9JmxDe6lzNymjP4$pJzkEJUu3c9gyNUvU0T9Wwq2pmMZN4zbzEE8PZ3xzBc=','2021-11-22 22:07:19.411467',0,'x2020dxl','Sanjana','','sanjshroff2@gmail.co',0,1,'2021-11-22 22:06:46.539138'),(5,'pbkdf2_sha256$260000$AIsIOt8AH4E6wmLHDGbQZE$T+1jBAY7RCNrN0RvK5xOivr8KKbpgVbUtlCMeAVpgsY=','2021-11-26 20:58:19.408731',0,'anil','anil','','anil@gmail.com',0,1,'2021-11-26 04:34:01.476838'),(9,'pbkdf2_sha256$260000$q2cnTIBnantmPe3GcGaoww$2oj1IS5V9v27PQJ3baWCG9t0TgwCNrVhSHt9no5MSUU=','2021-11-27 00:15:40.098547',0,'pyadavs','PAVAN','','pavansyadav07@gmail.com',0,1,'2021-11-26 22:52:01.973840'),(10,'pbkdf2_sha256$260000$HouknXHHBbBxLcj70pHwDR$wJjcmWv+VbfE8JWdIo4qgBIh5Y8ucNxBluv0MIqovsE=','2021-11-29 17:48:22.091076',0,'chetan123','chetan','','chetan123@gmail.com',0,1,'2021-11-28 20:45:52.215397');
+INSERT INTO `auth_user` VALUES (1,'pbkdf2_sha256$260000$Ve3ifaI3eNElP8NrTUh0bF$LWiLIshlX4KvOwOVEbqdy8Q79dP36XxBK4WaI7sdAvY=','2021-12-01 04:10:38.830910',1,'admin','','','admin@gmail.com',1,1,'2021-10-08 23:24:00.261970'),(2,'pbkdf2_sha256$260000$V2SKlsvT1NYNinBEaSNTUT$aRcksPnrjS+tW5sKEbWLLVjQZdAUl3s2z3hKiECLJ0E=',NULL,0,'sanjshroff2@gmail.com','','','',0,1,'2021-11-17 03:35:21.950574'),(3,'pbkdf2_sha256$260000$p1cKzf6T0i1JSja9IDbjw1$AvH9CcqE95cq4WP1IR3+oYAbjKGMYFjfXjWyOe6V3wg=','2021-11-19 05:13:00.105874',0,'kush','kushal','','kush@gmail.com',0,1,'2021-11-19 05:09:26.383730'),(4,'pbkdf2_sha256$260000$guuR9lH9JmxDe6lzNymjP4$pJzkEJUu3c9gyNUvU0T9Wwq2pmMZN4zbzEE8PZ3xzBc=','2021-11-22 22:07:19.411467',0,'x2020dxl','Sanjana','','sanjshroff2@gmail.co',0,1,'2021-11-22 22:06:46.539138'),(5,'pbkdf2_sha256$260000$AIsIOt8AH4E6wmLHDGbQZE$T+1jBAY7RCNrN0RvK5xOivr8KKbpgVbUtlCMeAVpgsY=','2021-11-26 20:58:19.408731',0,'anil','anil','','anil@gmail.com',0,1,'2021-11-26 04:34:01.476838'),(9,'pbkdf2_sha256$260000$q2cnTIBnantmPe3GcGaoww$2oj1IS5V9v27PQJ3baWCG9t0TgwCNrVhSHt9no5MSUU=','2021-11-30 23:37:57.127954',0,'pyadavs','PAVAN','','pavansyadav07@gmail.com',0,1,'2021-11-26 22:52:01.973840'),(10,'pbkdf2_sha256$260000$HouknXHHBbBxLcj70pHwDR$wJjcmWv+VbfE8JWdIo4qgBIh5Y8ucNxBluv0MIqovsE=','2021-11-29 17:48:22.091076',0,'chetan123','chetan','','chetan123@gmail.com',0,1,'2021-11-28 20:45:52.215397'),(11,'pbkdf2_sha256$260000$6rlTfI9bC7GgiNwvnnuOem$VBnAoOCtAgb6Im7IxSePC8aKrPrMtj1tc8hK0Q4MMws=','2021-12-01 04:21:00.336262',0,'manish07','Manish','','manish@gmail.com',0,1,'2021-12-01 04:20:59.405592'),(12,'pbkdf2_sha256$260000$sdlNu2JnA8NAXpwTl8RZT7$qWV5hmuQ2PQE5dJ8Ln7H/dTcm0oj7IFBzGe9BGAma3k=','2021-12-01 04:22:04.691928',0,'kushal07','kushal','','kushal08@gmail.com',0,1,'2021-12-01 04:22:03.797844'),(13,'pbkdf2_sha256$260000$2CpI9PGgTGbuWm3V6IW8YS$u/067//O3ojaO8tqtZPIxifBBLgY1cb+v50s7ntE9AI=','2021-12-01 04:22:56.264294',0,'pan','pan','','pan@gmail.com',0,1,'2021-12-01 04:22:55.329537'),(14,'pbkdf2_sha256$260000$LT7vrLWXI5nCfwinBXLBVN$W+O0m54u8HrObxNY/RU1YstjebuH24uivFGo7QAKzCc=','2021-12-01 04:23:48.118844',0,'sanjshroff@gmail.com','shroff','','shroff@gmail.com',0,1,'2021-12-01 04:23:47.201870');
 /*!40000 ALTER TABLE `auth_user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -203,7 +203,7 @@ CREATE TABLE `course` (
   PRIMARY KEY (`courseId`),
   KEY `trainer_idx` (`trainer`),
   CONSTRAINT `trainer` FOREIGN KEY (`trainer`) REFERENCES `instructor` (`instructorId`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -212,7 +212,7 @@ CREATE TABLE `course` (
 
 LOCK TABLES `course` WRITE;
 /*!40000 ALTER TABLE `course` DISABLE KEYS */;
-INSERT INTO `course` VALUES (10,'Yoga','Relaxes your mind. Yoga is a mind and body practice. Various styles of yoga combine physical posture',305,'yoga_mvwLQHV.jpg','https://zoom.us/','2021-11-19 21:34:04.816871'),(11,'Aerobics','Increase your stamina, fitness and strength',306,'aerobics_DSsaOtR.jpg','https://zoom.us/','2021-11-19 21:34:23.917430'),(12,'Zumba','Zumba is a fitness program that combines Latin and international music with dance moves. Zumba routi',305,'default_GBURsCC.png','https://zoom.us/','2021-11-19 22:18:14.543006'),(14,'Strength','Weight training is a type of strength training that uses weights for resistance.',310,'strength_dE2XCw5.jpg','https://zoom.us/','2021-11-27 14:19:18.756518');
+INSERT INTO `course` VALUES (10,'Yoga','Relaxes your mind. Yoga is a mind and body practice. Various styles of yoga combine physical posture',305,'yoga_mvwLQHV.jpg','https://zoom.us/','2021-11-19 21:34:04.816871'),(11,'Aerobics','Increase your stamina, fitness and strength',306,'aerobics_DSsaOtR.jpg','https://zoom.us/','2021-11-19 21:34:23.917430'),(12,'Zumba','Zumba is a fitness program that combines Latin and international music with dance moves. Zumba routi',305,'default_GBURsCC.png','https://zoom.us/','2021-11-19 22:18:14.543006'),(14,'Strength','Weight training is a type of strength training that uses weights for resistance.',310,'strength_dE2XCw5.jpg','https://zoom.us/','2021-11-27 14:19:18.756518'),(15,'Dancing Yoga','Dance Yoga is a combination of Yoga and Contemporary Movements.',311,'dancing_yoga.jpg','https://zoom.us/','2021-12-01 04:14:11.243087'),(16,'Circuit Training','Circuit training is a style of workout where you cycle through several exercises.',311,'circuit_training.jpg','https://zoom.us/','2021-12-01 04:15:22.065051'),(17,'Boxing','Boxing is a combat sport in which two people, usually wearing protective gloves and other protective',307,'boxing.jpg','https://zoom.us/','2021-12-01 04:16:31.998116');
 /*!40000 ALTER TABLE `course` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -238,7 +238,7 @@ CREATE TABLE `django_admin_log` (
   CONSTRAINT `django_admin_log_content_type_id_c4bce8eb_fk_django_co` FOREIGN KEY (`content_type_id`) REFERENCES `django_content_type` (`id`),
   CONSTRAINT `django_admin_log_user_id_c564eba6_fk_auth_user_id` FOREIGN KEY (`user_id`) REFERENCES `auth_user` (`id`),
   CONSTRAINT `django_admin_log_chk_1` CHECK ((`action_flag` >= 0))
-) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=54 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -247,7 +247,7 @@ CREATE TABLE `django_admin_log` (
 
 LOCK TABLES `django_admin_log` WRITE;
 /*!40000 ALTER TABLE `django_admin_log` DISABLE KEYS */;
-INSERT INTO `django_admin_log` VALUES (1,'2021-10-08 23:29:13.026587','101','Course object (101)',1,'[{\"added\": {}}]',8,1),(2,'2021-11-17 03:18:29.258187','204','pa1',1,'[{\"added\": {}}]',10,1),(3,'2021-11-17 03:35:22.884103','2','sanjshroff2@gmail.com',1,'[{\"added\": {}}]',4,1),(4,'2021-11-17 03:36:00.860987','1','Student object (1)',1,'[{\"added\": {}}]',11,1),(5,'2021-11-17 04:05:54.662690','1','Yoga1',2,'[{\"changed\": {\"fields\": [\"Trainer\"]}}]',8,1),(6,'2021-11-17 04:29:21.550830','8','Yoga',1,'[{\"added\": {}}]',8,1),(7,'2021-11-17 05:16:15.953398','9','Aerobics',1,'[{\"added\": {}}]',8,1),(8,'2021-11-18 04:39:15.502908','8','Yoga',2,'[{\"changed\": {\"fields\": [\"Featured image\"]}}]',8,1),(9,'2021-11-18 04:41:07.184416','9','Aerobics',2,'[{\"changed\": {\"fields\": [\"Featured image\"]}}]',8,1),(10,'2021-11-18 05:31:49.377589','d60813db-a590-4bbe-b336-b08b9bbc2e04','sanjshroff',1,'[{\"added\": {}}]',11,1),(11,'2021-11-18 05:32:34.168915','2190dfdb-ab41-4285-8d4e-ce586fabe43a','admin',1,'[{\"added\": {}}]',11,1),(12,'2021-11-19 21:25:49.108169','303','Jhon Gonzalez',3,'',7,1),(13,'2021-11-19 21:26:05.609642','302','Matthew Perry',3,'',7,1),(14,'2021-11-19 21:26:11.494077','301','Christine Lewis',3,'',7,1),(15,'2021-11-19 21:26:51.027009','305','Christine Lewis',1,'[{\"added\": {}}]',7,1),(16,'2021-11-19 21:27:20.811503','306','Matthew Perry',1,'[{\"added\": {}}]',7,1),(17,'2021-11-19 21:28:01.419759','307','Jhon Gonzalez',1,'[{\"added\": {}}]',7,1),(18,'2021-11-19 21:34:04.838005','10','Yoga',1,'[{\"added\": {}}]',8,1),(19,'2021-11-19 21:34:23.921110','11','Aerobics',1,'[{\"added\": {}}]',8,1),(20,'2021-11-19 22:18:14.544927','12','Zumba',1,'[{\"added\": {}}]',8,1),(21,'2021-11-19 22:26:37.092302','13','Dance',1,'[{\"added\": {}}]',8,1),(22,'2021-11-20 03:27:03.532464','0','Enroll object (0)',1,'[{\"added\": {}}]',12,1),(23,'2021-11-20 03:28:16.929691','205','std3',1,'[{\"added\": {}}]',10,1),(24,'2021-11-20 03:28:24.603477','0','Enroll object (0)',1,'[{\"added\": {}}]',12,1),(25,'2021-11-26 04:40:33.787310','6','xxx1',3,'',4,1),(26,'2021-11-26 22:43:23.958793','7','pyadavs',3,'',4,1),(27,'2021-11-26 22:51:15.383203','8','pyadavs',3,'',4,1),(28,'2021-11-27 04:17:49.276262','20','Enroll object (20)',3,'',12,1),(29,'2021-11-27 04:18:23.373802','21','Enroll object (21)',3,'',12,1),(30,'2021-11-27 04:21:05.599740','22','Enroll object (22)',3,'',12,1),(31,'2021-11-27 04:22:04.346865','23','Enroll object (23)',3,'',12,1),(32,'2021-11-27 04:24:47.075518','24','Enroll object (24)',3,'',12,1),(33,'2021-11-27 04:27:14.648073','25','Enroll object (25)',3,'',12,1),(34,'2021-11-27 04:27:22.768276','19','Enroll object (19)',3,'',12,1),(35,'2021-11-27 04:27:29.137706','26','Enroll object (26)',3,'',12,1),(36,'2021-11-27 04:27:34.722550','27','Enroll object (27)',3,'',12,1),(37,'2021-11-27 04:27:39.703334','28','Enroll object (28)',3,'',12,1),(38,'2021-11-27 04:27:52.054625','30','Enroll object (30)',3,'',12,1),(39,'2021-11-27 04:27:55.879255','31','Enroll object (31)',3,'',12,1),(40,'2021-11-27 04:28:05.960284','29','Enroll object (29)',3,'',12,1),(41,'2021-11-27 04:28:24.843573','32','Enroll object (32)',3,'',12,1),(42,'2021-11-27 04:43:52.104677','33','Enroll object (33)',3,'',12,1),(43,'2021-11-27 04:43:56.627616','34','Enroll object (34)',3,'',12,1),(44,'2021-11-27 04:48:33.845431','35','Enroll object (35)',3,'',12,1),(45,'2021-11-27 04:50:08.486331','36','Enroll object (36)',3,'',12,1),(46,'2021-11-27 14:18:39.522923','310','George',1,'[{\"added\": {}}]',7,1),(47,'2021-11-27 14:19:18.758517','14','Strength',1,'[{\"added\": {}}]',8,1),(48,'2021-11-27 14:33:41.286771','310','George',2,'[{\"changed\": {\"fields\": [\"Featured image\"]}}]',7,1);
+INSERT INTO `django_admin_log` VALUES (1,'2021-10-08 23:29:13.026587','101','Course object (101)',1,'[{\"added\": {}}]',8,1),(2,'2021-11-17 03:18:29.258187','204','pa1',1,'[{\"added\": {}}]',10,1),(3,'2021-11-17 03:35:22.884103','2','sanjshroff2@gmail.com',1,'[{\"added\": {}}]',4,1),(4,'2021-11-17 03:36:00.860987','1','Student object (1)',1,'[{\"added\": {}}]',11,1),(5,'2021-11-17 04:05:54.662690','1','Yoga1',2,'[{\"changed\": {\"fields\": [\"Trainer\"]}}]',8,1),(6,'2021-11-17 04:29:21.550830','8','Yoga',1,'[{\"added\": {}}]',8,1),(7,'2021-11-17 05:16:15.953398','9','Aerobics',1,'[{\"added\": {}}]',8,1),(8,'2021-11-18 04:39:15.502908','8','Yoga',2,'[{\"changed\": {\"fields\": [\"Featured image\"]}}]',8,1),(9,'2021-11-18 04:41:07.184416','9','Aerobics',2,'[{\"changed\": {\"fields\": [\"Featured image\"]}}]',8,1),(10,'2021-11-18 05:31:49.377589','d60813db-a590-4bbe-b336-b08b9bbc2e04','sanjshroff',1,'[{\"added\": {}}]',11,1),(11,'2021-11-18 05:32:34.168915','2190dfdb-ab41-4285-8d4e-ce586fabe43a','admin',1,'[{\"added\": {}}]',11,1),(12,'2021-11-19 21:25:49.108169','303','Jhon Gonzalez',3,'',7,1),(13,'2021-11-19 21:26:05.609642','302','Matthew Perry',3,'',7,1),(14,'2021-11-19 21:26:11.494077','301','Christine Lewis',3,'',7,1),(15,'2021-11-19 21:26:51.027009','305','Christine Lewis',1,'[{\"added\": {}}]',7,1),(16,'2021-11-19 21:27:20.811503','306','Matthew Perry',1,'[{\"added\": {}}]',7,1),(17,'2021-11-19 21:28:01.419759','307','Jhon Gonzalez',1,'[{\"added\": {}}]',7,1),(18,'2021-11-19 21:34:04.838005','10','Yoga',1,'[{\"added\": {}}]',8,1),(19,'2021-11-19 21:34:23.921110','11','Aerobics',1,'[{\"added\": {}}]',8,1),(20,'2021-11-19 22:18:14.544927','12','Zumba',1,'[{\"added\": {}}]',8,1),(21,'2021-11-19 22:26:37.092302','13','Dance',1,'[{\"added\": {}}]',8,1),(22,'2021-11-20 03:27:03.532464','0','Enroll object (0)',1,'[{\"added\": {}}]',12,1),(23,'2021-11-20 03:28:16.929691','205','std3',1,'[{\"added\": {}}]',10,1),(24,'2021-11-20 03:28:24.603477','0','Enroll object (0)',1,'[{\"added\": {}}]',12,1),(25,'2021-11-26 04:40:33.787310','6','xxx1',3,'',4,1),(26,'2021-11-26 22:43:23.958793','7','pyadavs',3,'',4,1),(27,'2021-11-26 22:51:15.383203','8','pyadavs',3,'',4,1),(28,'2021-11-27 04:17:49.276262','20','Enroll object (20)',3,'',12,1),(29,'2021-11-27 04:18:23.373802','21','Enroll object (21)',3,'',12,1),(30,'2021-11-27 04:21:05.599740','22','Enroll object (22)',3,'',12,1),(31,'2021-11-27 04:22:04.346865','23','Enroll object (23)',3,'',12,1),(32,'2021-11-27 04:24:47.075518','24','Enroll object (24)',3,'',12,1),(33,'2021-11-27 04:27:14.648073','25','Enroll object (25)',3,'',12,1),(34,'2021-11-27 04:27:22.768276','19','Enroll object (19)',3,'',12,1),(35,'2021-11-27 04:27:29.137706','26','Enroll object (26)',3,'',12,1),(36,'2021-11-27 04:27:34.722550','27','Enroll object (27)',3,'',12,1),(37,'2021-11-27 04:27:39.703334','28','Enroll object (28)',3,'',12,1),(38,'2021-11-27 04:27:52.054625','30','Enroll object (30)',3,'',12,1),(39,'2021-11-27 04:27:55.879255','31','Enroll object (31)',3,'',12,1),(40,'2021-11-27 04:28:05.960284','29','Enroll object (29)',3,'',12,1),(41,'2021-11-27 04:28:24.843573','32','Enroll object (32)',3,'',12,1),(42,'2021-11-27 04:43:52.104677','33','Enroll object (33)',3,'',12,1),(43,'2021-11-27 04:43:56.627616','34','Enroll object (34)',3,'',12,1),(44,'2021-11-27 04:48:33.845431','35','Enroll object (35)',3,'',12,1),(45,'2021-11-27 04:50:08.486331','36','Enroll object (36)',3,'',12,1),(46,'2021-11-27 14:18:39.522923','310','George',1,'[{\"added\": {}}]',7,1),(47,'2021-11-27 14:19:18.758517','14','Strength',1,'[{\"added\": {}}]',8,1),(48,'2021-11-27 14:33:41.286771','310','George',2,'[{\"changed\": {\"fields\": [\"Featured image\"]}}]',7,1),(49,'2021-12-01 04:12:36.896326','311','Daniel Leven',1,'[{\"added\": {}}]',7,1),(50,'2021-12-01 04:14:11.245094','15','Dancing Yoga',1,'[{\"added\": {}}]',8,1),(51,'2021-12-01 04:15:22.068117','16','Circuit Training',1,'[{\"added\": {}}]',8,1),(52,'2021-12-01 04:16:32.000436','17','Boxing',1,'[{\"added\": {}}]',8,1),(53,'2021-12-01 04:18:04.474682','311','Daniel Leven',2,'[{\"changed\": {\"fields\": [\"Featured image\"]}}]',7,1);
 /*!40000 ALTER TABLE `django_admin_log` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -345,7 +345,7 @@ CREATE TABLE `enroll` (
   KEY `studentId_idx` (`studentId`),
   CONSTRAINT `courseId` FOREIGN KEY (`courseId`) REFERENCES `course` (`courseId`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `studentId` FOREIGN KEY (`studentId`) REFERENCES `users_student` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=52 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=69 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -354,7 +354,7 @@ CREATE TABLE `enroll` (
 
 LOCK TABLES `enroll` WRITE;
 /*!40000 ALTER TABLE `enroll` DISABLE KEYS */;
-INSERT INTO `enroll` VALUES ('2190dfdbab4142858d4ece586fabe43a',10,1),('d60813dba5904bbeb336b08b9bbc2e04',10,15),('2190dfdbab4142858d4ece586fabe43a',10,16);
+INSERT INTO `enroll` VALUES ('2190dfdbab4142858d4ece586fabe43a',10,1),('d60813dba5904bbeb336b08b9bbc2e04',10,15),('2190dfdbab4142858d4ece586fabe43a',10,16),('2190dfdbab4142858d4ece586fabe43a',12,53),('2190dfdbab4142858d4ece586fabe43a',14,54),('2190dfdbab4142858d4ece586fabe43a',17,55),('2190dfdbab4142858d4ece586fabe43a',15,56),('2190dfdbab4142858d4ece586fabe43a',11,57),('7501caae22da45d696eab5f89c8422e4',10,58),('7501caae22da45d696eab5f89c8422e4',14,59),('0c5a720d962d4efeb8904a2c22deb827',10,60),('0c5a720d962d4efeb8904a2c22deb827',14,61),('0c5a720d962d4efeb8904a2c22deb827',12,62),('99d562750ecf42e583d9a51d4b467a56',10,63),('99d562750ecf42e583d9a51d4b467a56',14,64),('2d64b8bc93114452bae391040ea28d40',10,65),('2d64b8bc93114452bae391040ea28d40',11,66),('2d64b8bc93114452bae391040ea28d40',15,67),('2d64b8bc93114452bae391040ea28d40',14,68);
 /*!40000 ALTER TABLE `enroll` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -376,7 +376,7 @@ CREATE TABLE `instructor` (
   `created` datetime(6) NOT NULL,
   `password` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`instructorId`)
-) ENGINE=InnoDB AUTO_INCREMENT=311 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=312 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -385,7 +385,7 @@ CREATE TABLE `instructor` (
 
 LOCK TABLES `instructor` WRITE;
 /*!40000 ALTER TABLE `instructor` DISABLE KEYS */;
-INSERT INTO `instructor` VALUES (305,'Christine Lewis','Yoga at the Desk Wellness Workshop','Welness','902-620-4844','wenmarbyoga@gmail.com','profile_gFSDkrn.jpg','2021-11-19 21:26:51.024047','12345'),(306,'Matthew Perry','Aerobics instructor','Aerobics','902-720-5467','matt@gmail.com','profile_KOzcY5E.jpg','2021-11-19 21:27:20.809459',NULL),(307,'Jhon Gonzale','Zumba Instructor','Zumba','902-720-5674','jhong@gmail.com','profile_lMJitPL.jpg','2021-11-19 21:28:01.415550',NULL),(310,'George','Strength training','Weight lifting','9027181234','george123@gmail.com','profile_BHATuMp.jpg','2021-11-27 14:18:39.520918',NULL);
+INSERT INTO `instructor` VALUES (305,'Christine Lewis','Yoga at the Desk Wellness Workshop','Welness','902-620-4844','wenmarbyoga@gmail.com','profile_gFSDkrn.jpg','2021-11-19 21:26:51.024047','12345'),(306,'Matthew Perry','Aerobics instructor','Aerobics','902-720-5467','matt@gmail.com','profile_KOzcY5E.jpg','2021-11-19 21:27:20.809459',NULL),(307,'Jhon Gonzale','Zumba Instructor','Zumba','902-720-5674','jhong@gmail.com','profile_lMJitPL.jpg','2021-11-19 21:28:01.415550',NULL),(310,'George','Strength training','Weight lifting','9027181234','george123@gmail.com','profile_BHATuMp.jpg','2021-11-27 14:18:39.520918',NULL),(311,'Daniel Leven','Dancing yoga','yoga','09027199020','Danielleven07@gmail.com','profile_MgAPl7g.jpg','2021-12-01 04:12:36.892244','admin12345');
 /*!40000 ALTER TABLE `instructor` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -476,7 +476,7 @@ CREATE TABLE `users_student` (
 
 LOCK TABLES `users_student` WRITE;
 /*!40000 ALTER TABLE `users_student` DISABLE KEYS */;
-INSERT INTO `users_student` VALUES (9,NULL,'2021-11-26 22:52:02.326158','pavansyadav07@gmail.com','175b41c068784a34ae832008eb49c7c2',NULL,'PAVAN','profiles/user-default.png',NULL,'pyadavs'),(1,'','2021-11-18 05:32:34.167529','admin@gmail.com','2190dfdbab4142858d4ece586fabe43a',NULL,'admin','profiles/user-default.png',NULL,'admin'),(10,NULL,'2021-11-28 20:45:52.680696','chetan123@gmail.com','8f748c58fc344c4cabfe6d049de613ad',NULL,'chetan','profiles/user-default.png',NULL,'chetan123'),(2,'','2021-11-18 05:31:49.376581','sanjshroff2@gmail.com','d60813dba5904bbeb336b08b9bbc2e04',NULL,'Sanjana','profiles/user-default.png','I am Shroff','sanjshroff');
+INSERT INTO `users_student` VALUES (12,NULL,'2021-12-01 04:22:04.670546','kushal08@gmail.com','0c5a720d962d4efeb8904a2c22deb827',NULL,'kushal','profiles/user-default.png',NULL,'kushal07'),(9,NULL,'2021-11-26 22:52:02.326158','pavansyadav07@gmail.com','175b41c068784a34ae832008eb49c7c2',NULL,'PAVAN','profiles/user-default.png',NULL,'pyadavs'),(1,'','2021-11-18 05:32:34.167529','admin@gmail.com','2190dfdbab4142858d4ece586fabe43a',NULL,'admin','profiles/user-default.png',NULL,'admin'),(14,NULL,'2021-12-01 04:23:48.100384','shroff@gmail.com','2d64b8bc93114452bae391040ea28d40',NULL,'shroff','profiles/user-default.png',NULL,'sanjshroff@gmail.com'),(11,NULL,'2021-12-01 04:21:00.316618','manish@gmail.com','7501caae22da45d696eab5f89c8422e4',NULL,'Manish','profiles/user-default.png',NULL,'manish07'),(10,NULL,'2021-11-28 20:45:52.680696','chetan123@gmail.com','8f748c58fc344c4cabfe6d049de613ad',NULL,'chetan','profiles/user-default.png',NULL,'chetan123'),(13,NULL,'2021-12-01 04:22:56.247017','pan@gmail.com','99d562750ecf42e583d9a51d4b467a56',NULL,'pan','profiles/user-default.png',NULL,'pan'),(2,'','2021-11-18 05:31:49.376581','sanjshroff2@gmail.com','d60813dba5904bbeb336b08b9bbc2e04',NULL,'Sanjana','profiles/user-default.png','I am Shroff','sanjshroff');
 /*!40000 ALTER TABLE `users_student` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -489,4 +489,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-11-30  0:31:38
+-- Dump completed on 2021-12-01  0:34:51
