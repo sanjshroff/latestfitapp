@@ -1,6 +1,6 @@
 from django.contrib.auth.models import User
 from django.contrib import messages
-from django.http.response import HttpResponse
+from django.http.response import HttpResponse, JsonResponse
 from django.shortcuts import redirect, render
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.decorators import login_required
@@ -34,42 +34,36 @@ myresultIns = mycursor.fetchall()
 print(myresultIns)
 
 
-class BarChartEnrollmentJSONView(BaseLineChartView):
+def bar_chart_enrollment_json(request):
 
-    def get_labels(self):
-        """Return labels for the x-axis."""
-        return [value[1] for value in myresult]
+    mydb = mysql.connector.connect(
+        host="localhost",
+        user="root",
+        password="admin123",
+        database="fitnessdb"
+    )
+    mycursor = mydb.cursor()
 
-    def get_providers(self):
-        """Return names of datasets."""
-        return [value[1] for value in myresult]
+    mycursor.execute(
+        """SELECT count(*),c.courseName FROM enroll e, course c where e.courseid=c.courseId  group by e.courseid""")
 
-    def get_data(self):
-        """Return datasets to plot."""
-        return [[value[0] for value in myresult]]
+    myresult = mycursor.fetchall()
+    print(myresult)
+    mycursor.execute(
+        """SELECT count(*),i.instructorName FROM instructor i, course c where c.trainer = i.instructorid group by i.instructorId;""")
+    myresultIns = mycursor.fetchall()
+    print(myresultIns)
+    labels = [value[1] for value in myresult]
+    data = [value[0] for value in myresult]
 
-
-bar_chart = TemplateView.as_view(template_name='dasboard.html')
-bar_chart_enrollment_json = BarChartEnrollmentJSONView.as_view()
-
-
-class BarChartCourseJSONView(BaseLineChartView):
-
-    def get_labels(self):
-        """Return labels for the x-axis."""
-        return [value[1] for value in myresultIns]
-
-    def get_providers(self):
-        """Return names of datasets."""
-        return [value[1] for value in myresultIns]
-
-    def get_data(self):
-        """Return datasets to plot."""
-        return [[value[0] for value in myresultIns]]
-
-
-bar_chart = TemplateView.as_view(template_name='dasboard.html')
-bar_chart_course_json = BarChartCourseJSONView.as_view()
+    labels1 = [value[1] for value in myresultIns]
+    data1 = [value[0] for value in myresultIns]
+    return JsonResponse(data={
+        'labels': labels,
+        'data': data,
+        'labels1': labels1,
+        'data1': data1,
+    })
 
 
 def profiles(request):
@@ -160,6 +154,7 @@ def courses(request):
     courses, search_query = searchCourses(request)
     context = {'courses': courses, 'search_query': search_query}
     return render(request, "users/courses.html", context)
+
 
 @login_required(login_url='login')
 def course(request, pk):

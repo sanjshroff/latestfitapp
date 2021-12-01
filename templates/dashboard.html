@@ -51,6 +51,8 @@
       src="{% static 'js/Chart.min.js' %}"
     ></script>
     <script type="text/javascript">
+      
+
       var ctx = $("#myChart").get(0).getContext("2d");
       var ctx1 = $("#myChart1").get(0).getContext("2d");
       const firstGraph = [
@@ -72,17 +74,32 @@
       ];
 
       $.get('{% url "bar_chart_enrollment_json" %}', function (response) {
-        console.log(response);
-        response.datasets[0].backgroundColor = firstGraph;
+        var enrollment_data = response.data;
+        var enrollment_labels = response.labels;
+        var course_data = response.data1;
+        var course_labels = response.labels1;
         new Chart(ctx, {
           type: "bar",
-          data: response,
+          data: {
+            labels: enrollment_labels,
+            borderColor: "#fffff",
+            datasets: [
+              {
+                data: enrollment_data,
+                borderColor: "#fff",
+                borderWidth: "3",
+                hoverBorderColor: "#000",
+                backgroundColor: firstGraph,
+                hoverBackgroundColor: firstGraph,
+              },
+            ],
+          },
           options: {
             scales: {
               yAxes: [
                 {
                   ticks: {
-                    max: 5,
+                    max: Math.max(...enrollment_data),
                     min: 0,
                     stepSize: 1,
                   },
@@ -94,22 +111,29 @@
             },
           },
         });
-      });
-
-      $.get('{% url "bar_chart_course_json" %}', function (response) {
-        console.log(response);
-
-        response.datasets[0].backgroundColor = secondGraph;
 
         new Chart(ctx1, {
           type: "bar",
-          data: response,
+          data: {
+            labels: course_labels,
+            borderColor: "#fffff",
+            datasets: [
+              {
+                data: course_data,
+                borderColor: "#fff",
+                borderWidth: "3",
+                hoverBorderColor: "#000",
+                backgroundColor: secondGraph,
+                hoverBackgroundColor: secondGraph,
+              },
+            ],
+          },
           options: {
             scales: {
               yAxes: [
                 {
                   ticks: {
-                    max: 5,
+                    max: Math.max(...enrollment_data),
                     min: 0,
                     stepSize: 1,
                   },
