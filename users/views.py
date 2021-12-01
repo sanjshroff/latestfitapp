@@ -7,16 +7,75 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.db.models import Q
 from .utils import searchCourses, searchInstructors
-
+from django.views.generic import TemplateView
+from chartjs.views.lines import BaseLineChartView
 from .forms import CustomUserCreationForm
-
+import mysql.connector
 from fitnessadmin.models import Course, Instructor, Enroll
 from .models import Student
 # Create your views here.
+mydb = mysql.connector.connect(
+    host="localhost",
+    user="root",
+    password="admin123",
+    database="fitnessdb"
+)
+mycursor = mydb.cursor()
+
+mycursor.execute(
+    """SELECT count(*),c.courseName FROM enroll e, course c where e.courseid=c.courseId  group by e.courseid""")
+
+myresult = mycursor.fetchall()
+print(myresult)
+
+mycursor.execute(
+    """SELECT count(*),i.instructorName FROM instructor i, course c where c.trainer = i.instructorid group by i.instructorId;""")
+myresultIns = mycursor.fetchall()
+print(myresultIns)
+
+
+class BarChartEnrollmentJSONView(BaseLineChartView):
+
+    def get_labels(self):
+        """Return labels for the x-axis."""
+        return [value[1] for value in myresult]
+
+    def get_providers(self):
+        """Return names of datasets."""
+        return [value[1] for value in myresult]
+
+    def get_data(self):
+        """Return datasets to plot."""
+        return [[value[0] for value in myresult]]
+
+
+bar_chart = TemplateView.as_view(template_name='dasboard.html')
+bar_chart_enrollment_json = BarChartEnrollmentJSONView.as_view()
+
+
+class BarChartCourseJSONView(BaseLineChartView):
+
+    def get_labels(self):
+        """Return labels for the x-axis."""
+        return [value[1] for value in myresultIns]
+
+    def get_providers(self):
+        """Return names of datasets."""
+        return [value[1] for value in myresultIns]
+
+    def get_data(self):
+        """Return datasets to plot."""
+        return [[value[0] for value in myresultIns]]
+
+
+bar_chart = TemplateView.as_view(template_name='dasboard.html')
+bar_chart_course_json = BarChartCourseJSONView.as_view()
 
 
 def profiles(request):
-    return render(request, 'users/profiles.html')
+
+    return render(request, 'dashboard.html')
+
 
 def loginUser(request):
     page = 'login'
@@ -39,17 +98,19 @@ def loginUser(request):
         if user is not None:
             login(request, user)
             return redirect('profiles')
-            #return redirect(request.GET['next'] if 'next' in request.GET else 'account')
+            # return redirect(request.GET['next'] if 'next' in request.GET else 'account')
 
         else:
             messages.error(request, 'Username OR password is incorrect')
-            
+
     return render(request, 'users/login_register.html', context)
-    #return HttpResponse("<h1>ogin required</h1>")
+    # return HttpResponse("<h1>ogin required</h1>")
+
 
 def logoutUser(request):
     logout(request)
     return redirect('login')
+
 
 def registerUser(request):
     page = 'register'
@@ -64,13 +125,14 @@ def registerUser(request):
 
             try:
                 print("USERname!!!!!!!", user.first_name)
-                student = Student.objects.create(user=user, name=user.first_name, email=user.email, username=user.username)
+                student = Student.objects.create(
+                    user=user, name=user.first_name, email=user.email, username=user.username)
                 student.save()
                 messages.success(request, 'User account was created!')
                 login(request, user)
             except:
                 messages.error(request, 'User account was not created!')
-            
+
             return redirect('profiles')
 
         else:
@@ -80,15 +142,16 @@ def registerUser(request):
     context = {'page': page, 'form': form}
     return render(request, 'users/login_register.html', context)
 
+
 @login_required(login_url='login')
 def courses(request):
-    
+
     if request.method == "POST":
         print(request.user.username)
         print(request.POST.get('data-course'))
         print(request.POST)
         # student = Student.objects.filter(Q(studentfirstname="Student1"))
-        
+
         # course1 = Course.objects.filter(coursename="Yoga")
         # print(student[0].studentid)
         # print(course1)
@@ -106,29 +169,34 @@ def course(request, pk):
     courseObj = Course.objects.filter(courseid=pk)
     studentObj = Student.objects.filter(username=request.user.username)
     enrollData = Enroll.objects.filter(Q(studentid=studentObj[0]) &
-        Q(courseid=courseObj[0]))
+                                       Q(courseid=courseObj[0]))
     print(enrollData)
 
     if enrollData:
         enrolledFlag = True
-        messages.success(request, "Already enrolled to {}".format(courseObj[0]))
+        messages.success(
+            request, "Already enrolled to {}".format(courseObj[0]))
     if request.method == "POST":
         print(pk)
         print(request.user.username)
         if request.POST["enroll"] == "Unsubscribe":
             enrollData.delete()
-            messages.success(request, "Unsubscribed from {}".format(courseObj[0]))
+            messages.success(
+                request, "Unsubscribed from {}".format(courseObj[0]))
             return redirect('courses')
 
         elif not enrollData:
-            enroll = Enroll.objects.create(studentid=studentObj[0], courseid=courseObj[0])
+            enroll = Enroll.objects.create(
+                studentid=studentObj[0], courseid=courseObj[0])
             enroll.save()
-            messages.success(request, "Successfully enrolled to {}".format(courseObj[0]))
+            messages.success(
+                request, "Successfully enrolled to {}".format(courseObj[0]))
             enrolledFlag = True
 
     course = Course.objects.get(courseid=pk)
-    context = {'course': course, 'enrolledFlag' : enrolledFlag}
+    context = {'course': course, 'enrolledFlag': enrolledFlag}
     return render(request, 'users/single-course.html', context)
+
 
 @login_required(login_url='login')
 def instructors(request):
@@ -136,11 +204,13 @@ def instructors(request):
     context = {'instructors': instructors, 'search_query': search_query}
     return render(request, "users/instructors.html", context)
 
+
 @login_required(login_url='login')
 def instructor(request, pk):
     instructor = Instructor.objects.get(instructorid=pk)
     context = {'instructor': instructor}
     return render(request, 'users/instructor-profile.html', context)
+
 
 @login_required(login_url='login')
 def enroll(request):
