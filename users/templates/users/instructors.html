@@ -1,0 +1,66 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+<!-- Main Section -->
+<main class="home">
+    <section class="hero-section text-center">
+        <div class="container container--narrow">
+            <div class="hero-section__box">
+                <h2>CONNECT WITH <span>Instructors</span></h2>
+            </div>
+
+            <div class="hero-section__search">
+
+                <form id="searchForm" class="form" action="{% url 'instructors' %}" method="get">
+                    <div class="form__field">
+                        <label for="formInput#search">Search Instructors </label>
+                        <input class="input input--text" id="formInput#search" type="text" name="search_query"
+                            value="{{search_query}}" placeholder="Search by instructors" />
+                    </div>
+
+                    <input class="btn btn--sub btn--lg" type="submit" value="Search" />
+                </form>
+
+            </div>
+        </div>
+    </section>
+    <!-- Search Result: DevList -->
+    <section class="devlist">
+        <div class="container">
+            <div class="grid grid--three">
+
+                {% for instructor in instructors %}
+                <div class="column card">
+                    <div class="dev">
+                        {% comment %} <a href="{% url 'instructors' %}" class="card__body"> {% endcomment %}
+                            <div class="dev__profile">
+                                <img class="avatar avatar--md" src="{{ instructor.featured_image.url }}" alt="image" />
+                                <div class="dev__meta">
+                                    <h3><a href="{% url 'instructor' instructor.instructorid %}">{{instructor.instructorname}}</a></h3>
+                                    <h5>{{instructor.instructorskills}}</h5>
+                                </div>
+                            </div>
+                            <p class="dev__info">{{instructor.instructorcourse}}</p>
+                            <div class="dev__skills">
+
+                                {% comment %} {% for skill in profile.skill_set.all|slice:"5" %}
+                                <span class="tag tag--pill tag--main">
+                                    <small>{{skill}}</small>
+                                </span>
+                                {% endfor %} {% endcomment %}
+
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                {% endfor %}
+
+            </div>
+        </div>
+    </section>
+
+    {% comment %} {% include 'pagination.html' with queryset=profiles custom_range=custom_range %} {% endcomment %}
+</main>
+
+{% endblock content %}

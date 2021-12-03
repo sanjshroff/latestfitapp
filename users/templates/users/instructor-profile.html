@@ -1,0 +1,51 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+<!-- Main Section -->
+<main class="profile my-md">
+    <div class="container">
+        <div class="layout">
+            <div class="column column--1of3">
+                <div class="card text-center">
+                    <div class="card__body dev">
+                        <img class="avatar avatar--xl" src="{{ instructor.featured_image.url }}" />
+                        <h2 class="dev__name">{{instructor.instructorname}}</h2>
+                        <p class="dev__title">{{instructor.instructorcourse}}</p>
+                        <p class="dev__title">{{instructor.instructorphonenumber}}</p>
+                        <p class="dev__title">{{instructor.instructoremail}}</p>
+                        
+                    </div>
+                </div>
+            </div>
+            
+                <div class="devInfo">
+                    <h3 class="devInfo__title">Courses</h3>
+                    <div class="grid grid--two">
+                        {% for course in instructor.course_set.all %}
+                        <div class="column">
+                            <div class="card project">
+                                <a href="{% url 'course' course.courseid %}" class="project">
+                                    <img class="project__thumbnail" src="{{course.featured_image.url}}"
+                                        alt="project thumbnail" />
+                                    <div class="card__body">
+                                        <h3 class="project__title">{{course.coursename}}</h3>
+                                        <p><a class="project__author"
+                                                href="{% url 'instructor' course.trainer.instructorid %}">By
+                                                {{course.trainer.instructorname}}</a>
+                                        </p>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        {% endfor %}
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+{% endblock content %}

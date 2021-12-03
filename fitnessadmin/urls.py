@@ -2,6 +2,8 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
+    path('', views.home, name="home"),
+    path('adminhome/', views.adminhome, name="adminhome"),
     path('home/', views.home, name="home"),
     path('session/', views.sessions, name="session"),
     path('students/', views.students, name="students"),
@@ -19,6 +21,6 @@ urlpatterns = [
     path('deleteInstructor/<str:pk>/', views.deleteInstructor, name="deleteInstructor"),
 
     #dont push
-    path('enroll/', views.addEnrollment, name="addEnrollment"),
-    path('enrolled/', views.Enrollment, name="Enrollment"),
+    path('enrolled/', views.enrolled, name="enrolled"),
+    path('enrollment/', views.addEnrollment, name="addEnrollment"),
 ]

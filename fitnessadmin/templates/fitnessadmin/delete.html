@@ -1,0 +1,11 @@
+{% extends 'baseadmin.html' %}
+
+{% block content %}
+
+<form action="" method="POST">
+    {% csrf_token %}
+    <p> Delete {{ object }} ? </p>
+    <a href={% url 'admincourses' %}>Go back</a>
+    <input type="submit" value="Confirm" />
+</form>
+{% endblock content %}

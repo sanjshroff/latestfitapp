@@ -3,11 +3,15 @@ from django.shortcuts import redirect, render
 # Create your views here.
 from django.http import HttpResponse
 import MySQLdb
-from fitnessadmin.models import Instructor, Student, Course, Enroll
+from fitnessadmin.models import Instructor, Course, Enroll
 from .forms import CourseForm, InstructorForm, EnrollForm
 
+from users.models import Student
 def home(request):
-    return render(request, "home.html")
+    return render(request, "adminhome.html")
+
+def adminhome(request):
+    return render(request, "adminhome.html")    
 
 def sessions(request):
     return HttpResponse("<h1>Sessions available today are:</h1>")
@@ -108,12 +112,12 @@ def addEnrollment(request):
         form =  EnrollForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('admininstructors')
+            return redirect('enrolled')
         print(request.POST)
     context = {'form': form}
     return render(request, "fitnessadmin/enrollment.html", context)
 
-def Enrollment(request):
+def enrolled(request):
     enroll = Enroll.objects.all()
     context = {'enroll': enroll}
-    return render(request, "fitnessadmin/enroll.html", context)
+    return render(request, "fitnessadmin/enrolled.html", context)

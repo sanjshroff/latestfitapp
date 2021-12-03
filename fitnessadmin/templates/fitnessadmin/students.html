@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'baseadmin.html' %}
 
 {% block content %}
 
@@ -20,10 +20,9 @@
             <a href="" class="project">
               <!--<img class="project__thumbnail" src="" alt="project thumbnail" />--> 
               <div class="card__body">
-                <h3 class="project__title">{{student.studentfirstname}}</h3>
-                <p><a class="project__author" href="">{{student.studentlastname}}<!--By Dennis Ivanov --></a></p>
-                <p><a class="project__author" href="">{{student.studentphonenumber}}<!--By Dennis Ivanov --></a></p>
-                <p><a class="project__author" href="">{{student.studentemailid}}<!--By Dennis Ivanov --></a></p>
+                <h3 class="project__title">{{student.name}}</h3>
+                <p><a class="project__author" href="">{{student.username}}<!--By Dennis Ivanov --></a></p>
+                <p><a class="project__author" href="">{{student.email}}<!--By Dennis Ivanov --></a></p>
                 <p class="project--rating">
                 
                 </p>

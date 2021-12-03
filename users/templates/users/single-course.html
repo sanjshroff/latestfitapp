@@ -1,0 +1,52 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+<!-- Main Section -->
+<main class="singleProject my-md">
+    <div class="container">
+        <div class="layout">
+            <div class="column column--1of3">
+                <h3 class="singleProject__subtitle">Tools & Stacks</h3>
+                <div class="singleProject__toolStack">
+                    {% for tag in course.trainer.all %}
+                    <span class="tag tag--pill tag--sub tag--lg">
+                        <small>{{tag}}</small>
+                    </span>
+                    {% endfor %}
+
+                </div>
+
+                {% if not enrolledFlag %}
+                <form action="" method="POST">
+                {% csrf_token %}
+                <input id="enrollForm" class="btn btn--sub btn--lg  my-md" type="submit" value="Enroll" name='enroll' />
+                </form>
+                {% elif enrolledFlag and course.zoom_link %}
+                <form action="" method="POST">
+                {% csrf_token %}
+                <a class="singleProject__liveLink" href="{{course.zoom_link}}" target="_blank"><i
+                        class="im im-external-link"></i>Click here to join the Zoom session
+                </a>
+                <input id="unenrollForm" class="btn btn--sub btn--lg  my-md" type="submit" value="Unsubscribe" name='enroll' />
+                </form>
+                {% endif %}
+                
+            </div>
+            <div class="column column--2of3">
+                <img class="singleProject__preview" src="{{ course.featured_image.url }}" alt="portfolio thumbnail" />
+                {% comment %} <a href="{% url 'user-profile' project.owner.id  %}"
+                    class="singleProject__developer">{{project.owner.name}}</a> {% endcomment %}
+                <h2 class="singleProject__title">{{course.coursename}}</h2>
+                <h3 class="singleProject__subtitle">About the Course</h3>
+                <div class="">
+                    {{course.coursedescription}}
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    </div>
+</main>
+
+{% endblock content %}
